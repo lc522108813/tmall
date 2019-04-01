@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsBrand;
 import com.lc.tmall.model.PmsBrandExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsBrandMapper {
     int countByExample(PmsBrandExample example);

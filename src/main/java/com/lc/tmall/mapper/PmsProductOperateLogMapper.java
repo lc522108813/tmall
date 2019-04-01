@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsProductOperateLog;
 import com.lc.tmall.model.PmsProductOperateLogExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsProductOperateLogMapper {
     int countByExample(PmsProductOperateLogExample example);

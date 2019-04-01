@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsAlbum;
 import com.lc.tmall.model.PmsAlbumExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsAlbumMapper {
     int countByExample(PmsAlbumExample example);

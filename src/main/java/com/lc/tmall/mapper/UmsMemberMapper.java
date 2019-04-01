@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.UmsMember;
 import com.lc.tmall.model.UmsMemberExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UmsMemberMapper {
     int countByExample(UmsMemberExample example);

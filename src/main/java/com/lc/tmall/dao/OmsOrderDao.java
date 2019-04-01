@@ -4,10 +4,6 @@ import com.lc.tmall.dto.OmsOrderDeliveryParam;
 import com.lc.tmall.dto.OmsOrderDetail;
 import com.lc.tmall.dto.OmsOrderQueryParam;
 import com.lc.tmall.model.OmsOrder;
-import com.macro.mall.dto.OmsOrderDeliveryParam;
-import com.macro.mall.dto.OmsOrderDetail;
-import com.macro.mall.dto.OmsOrderQueryParam;
-import com.macro.mall.model.OmsOrder;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.CmsSubjectComment;
 import com.lc.tmall.model.CmsSubjectCommentExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CmsSubjectCommentMapper {
     int countByExample(CmsSubjectCommentExample example);

@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.UmsRolePermissionRelation;
 import com.lc.tmall.model.UmsRolePermissionRelationExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UmsRolePermissionRelationMapper {
     int countByExample(UmsRolePermissionRelationExample example);

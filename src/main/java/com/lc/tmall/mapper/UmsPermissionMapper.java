@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.UmsPermission;
 import com.lc.tmall.model.UmsPermissionExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UmsPermissionMapper {
     int countByExample(UmsPermissionExample example);

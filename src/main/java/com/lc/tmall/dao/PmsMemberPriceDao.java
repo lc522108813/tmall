@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.model.PmsMemberPrice;
+import com.lc.tmall.model.PmsMemberPrice;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -3,8 +3,7 @@ package com.lc.tmall.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -13,125 +12,101 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * JwtToken生成的工具类
- * JWT token的格式：header.payload.signature
- * header的格式（算法、token的类型）：
- * {"alg": "HS512","typ": "JWT"}
- * payload的格式（用户名、创建时间、生成时间）：
- * {"sub":"wang","created":1489079981393,"exp":1489684781}
- * signature的生成算法：
- * HMACSHA256(base64UrlEncode(header) + "." +base64UrlEncode(payload),secret)
- * Created by macro on 2018/4/26.
- */
 @Component
+@Slf4j
 public class JwtTokenUtil {
-    private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
-    private static final String CLAIM_KEY_USERNAME = "sub";
-    private static final String CLAIM_KEY_CREATED = "created";
+    /** 当前的Claims当中又两个信息
+     * 1 sub:xxx 表示主体
+     * 2 created: xxx 表示该负载生成的时间
+     * **/
+    private static final String CLAIM_KEY_USERNAME="sub";
+    private static final String CLAIM_KEY_CREATED="created";
+
     @Value("${jwt.secret}")
     private String secret;
     @Value("${jwt.expiration}")
     private Long expiration;
 
-    /**
-     * 根据负责生成JWT的token
-     */
-    private String generateToken(Map<String, Object> claims) {
+
+
+    /** 根据用户信息生成token **/
+    public String generateToken(UserDetails userDetails){
+        Map<String,Object> claims=new HashMap<>();
+        claims.put(CLAIM_KEY_USERNAME,userDetails.getUsername());
+        claims.put(CLAIM_KEY_CREATED,new Date());
+        return generateToken(claims);
+    }
+
+
+    /** 根据负载生成token **/
+    public String generateToken(Map<String,Object> claims){
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(generateExpirationDate())
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512,secret)
                 .compact();
     }
 
-    /**
-     * 从token中获取JWT中的负载
-     */
-    private Claims getClaimsFromToken(String token) {
-        Claims claims = null;
-        try {
-            claims = Jwts.parser()
+    private Date generateExpirationDate(){
+        return new Date(System.currentTimeMillis()+expiration*1000);
+    }
+
+    /** 从token当中获取负载 **/
+    public Claims getClaimsFromToken(String token){
+        Claims claims=null;
+        try{
+            // 在当前场景中，负载只使用了 sub已经 expireDate
+            claims=Jwts.parser()
                     .setSigningKey(secret)
                     .parseClaimsJws(token)
                     .getBody();
-        } catch (Exception e) {
-            LOGGER.info("JWT格式验证失败:{}",token);
+
+        }catch (Exception e){
+            log.info("jwt格式校验失败 {}",token);
         }
         return claims;
     }
 
-    /**
-     * 生成token的过期时间
-     */
-    private Date generateExpirationDate() {
-        return new Date(System.currentTimeMillis() + expiration * 1000);
-    }
-
-    /**
-     * 从token中获取登录用户名
-     */
-    public String getUserNameFromToken(String token) {
+    /** 从token当中获取用户 **/
+    public String getUsernameFromToken(String token){
         String username;
-        try {
-            Claims claims = getClaimsFromToken(token);
-            username =  claims.getSubject();
-        } catch (Exception e) {
-            username = null;
+        try{
+            Claims claims=getClaimsFromToken(token);
+            username=claims.getSubject();
+        }catch (Exception e){
+            username=null;
         }
         return username;
     }
 
-    /**
-     * 验证token是否还有效
-     *
-     * @param token       客户端传入的token
-     * @param userDetails 从数据库中查询出来的用户信息
-     */
-    public boolean validateToken(String token, UserDetails userDetails) {
-        String username = getUserNameFromToken(token);
-        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
+    /** 校验token是否有效 **/
+    /** 不会空指针，因为调用方的 UserDetails在查询动作中不会为空，否则会报账号或密码错误异常 **/
+    public boolean validateToken(String token,UserDetails userDetails){
+        String username=getUsernameFromToken(token);
+        return username.equals(userDetails.getUsername())&& !isTokenExpired(token);
     }
 
-    /**
-     * 判断token是否已经失效
-     */
-    private boolean isTokenExpired(String token) {
-        Date expiredDate = getExpiredDateFromToken(token);
-        return expiredDate.before(new Date());
-    }
-
-    /**
-     * 从token中获取过期时间
-     */
-    private Date getExpiredDateFromToken(String token) {
-        Claims claims = getClaimsFromToken(token);
+    /** 从token当中获取过期时间 **/
+    public Date getExpiredDateFromToken(String token){
+        Claims claims=getClaimsFromToken(token);
         return claims.getExpiration();
     }
 
-    /**
-     * 根据用户信息生成token
-     */
-    public String generateToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
-        claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
-        claims.put(CLAIM_KEY_CREATED, new Date());
-        return generateToken(claims);
+    /** 校验token是否过期 **/
+    public boolean isTokenExpired(String token){
+        Date date=getExpiredDateFromToken(token);
+        return new Date().after(date);
     }
 
-    /**
-     * 判断token是否可以被刷新
-     */
-    public boolean canRefresh(String token) {
+    /** 判断token是否可以被刷新 **/
+    public boolean canRefresh(String token){
         return !isTokenExpired(token);
     }
 
-    /**
-     * 刷新token
-     */
-    public String refreshToken(String token) {
-        Claims claims = getClaimsFromToken(token);
-        claims.put(CLAIM_KEY_CREATED, new Date());
+    /** 刷新token **/
+    public String refreshToken(String token){
+        Claims claims=getClaimsFromToken(token);
+        claims.put(CLAIM_KEY_CREATED,new Date());
         return generateToken(claims);
     }
 }

@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.SmsHomeRecommendProduct;
 import com.lc.tmall.model.SmsHomeRecommendProductExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SmsHomeRecommendProductMapper {
     int countByExample(SmsHomeRecommendProductExample example);

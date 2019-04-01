@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.OmsOrderSetting;
 import com.lc.tmall.model.OmsOrderSettingExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface OmsOrderSettingMapper {
     int countByExample(OmsOrderSettingExample example);

@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsProductVertifyRecord;
 import com.lc.tmall.model.PmsProductVertifyRecordExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsProductVertifyRecordMapper {
     int countByExample(PmsProductVertifyRecordExample example);

@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.SmsHomeAdvertise;
 import com.lc.tmall.model.SmsHomeAdvertiseExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SmsHomeAdvertiseMapper {
     int countByExample(SmsHomeAdvertiseExample example);

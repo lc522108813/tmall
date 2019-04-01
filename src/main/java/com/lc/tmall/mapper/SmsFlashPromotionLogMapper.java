@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.SmsFlashPromotionLog;
 import com.lc.tmall.model.SmsFlashPromotionLogExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SmsFlashPromotionLogMapper {
     int countByExample(SmsFlashPromotionLogExample example);

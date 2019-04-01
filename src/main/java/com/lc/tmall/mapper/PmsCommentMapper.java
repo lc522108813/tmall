@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsComment;
 import com.lc.tmall.model.PmsCommentExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsCommentMapper {
     int countByExample(PmsCommentExample example);

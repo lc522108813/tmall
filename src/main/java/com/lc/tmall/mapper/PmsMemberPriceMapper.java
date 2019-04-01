@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsMemberPrice;
 import com.lc.tmall.model.PmsMemberPriceExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsMemberPriceMapper {
     int countByExample(PmsMemberPriceExample example);

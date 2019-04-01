@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.dto.ProductAttrInfo;
+import com.lc.tmall.dto.ProductAttrInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

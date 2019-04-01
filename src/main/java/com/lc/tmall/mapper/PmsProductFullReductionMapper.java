@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsProductFullReduction;
 import com.lc.tmall.model.PmsProductFullReductionExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsProductFullReductionMapper {
     int countByExample(PmsProductFullReductionExample example);

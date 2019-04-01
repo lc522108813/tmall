@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.SmsFlashPromotionProductRelation;
 import com.lc.tmall.model.SmsFlashPromotionProductRelationExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SmsFlashPromotionProductRelationMapper {
     int countByExample(SmsFlashPromotionProductRelationExample example);

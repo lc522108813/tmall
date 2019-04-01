@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.CmsPrefrenceArea;
 import com.lc.tmall.model.CmsPrefrenceAreaExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CmsPrefrenceAreaMapper {
     int countByExample(CmsPrefrenceAreaExample example);

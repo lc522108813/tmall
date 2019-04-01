@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.dto.SmsFlashPromotionProduct;
+import com.lc.tmall.dto.SmsFlashPromotionProduct;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

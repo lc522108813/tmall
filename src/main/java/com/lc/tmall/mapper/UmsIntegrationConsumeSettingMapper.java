@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.UmsIntegrationConsumeSetting;
 import com.lc.tmall.model.UmsIntegrationConsumeSettingExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UmsIntegrationConsumeSettingMapper {
     int countByExample(UmsIntegrationConsumeSettingExample example);

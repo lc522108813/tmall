@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.model.SmsCouponProductCategoryRelation;
+import com.lc.tmall.model.SmsCouponProductCategoryRelation;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

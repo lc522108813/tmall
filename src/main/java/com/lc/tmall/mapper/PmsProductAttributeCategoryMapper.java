@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsProductAttributeCategory;
 import com.lc.tmall.model.PmsProductAttributeCategoryExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsProductAttributeCategoryMapper {
     int countByExample(PmsProductAttributeCategoryExample example);

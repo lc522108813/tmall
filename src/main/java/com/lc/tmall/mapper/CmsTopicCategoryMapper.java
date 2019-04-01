@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.CmsTopicCategory;
 import com.lc.tmall.model.CmsTopicCategoryExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CmsTopicCategoryMapper {
     int countByExample(CmsTopicCategoryExample example);

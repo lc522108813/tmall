@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsSkuStock;
 import com.lc.tmall.model.PmsSkuStockExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsSkuStockMapper {
     int countByExample(PmsSkuStockExample example);

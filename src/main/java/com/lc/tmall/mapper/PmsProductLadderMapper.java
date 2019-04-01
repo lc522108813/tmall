@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsProductLadder;
 import com.lc.tmall.model.PmsProductLadderExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsProductLadderMapper {
     int countByExample(PmsProductLadderExample example);

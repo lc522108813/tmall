@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.dto.PmsProductResult;
+import com.lc.tmall.dto.PmsProductResult;
 import org.apache.ibatis.annotations.Param;
 
 

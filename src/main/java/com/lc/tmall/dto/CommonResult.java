@@ -95,7 +95,7 @@ public class CommonResult {
      */
     public CommonResult forbidden(String message) {
         this.code = FORBIDDEN;
-        this.message = "没有相关权限";
+        this.message = "forbidden request";
         this.data = message;
         return this;
     }

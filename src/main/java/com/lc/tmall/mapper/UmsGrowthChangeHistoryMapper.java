@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.UmsGrowthChangeHistory;
 import com.lc.tmall.model.UmsGrowthChangeHistoryExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UmsGrowthChangeHistoryMapper {
     int countByExample(UmsGrowthChangeHistoryExample example);

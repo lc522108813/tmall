@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsProductAttribute;
 import com.lc.tmall.model.PmsProductAttributeExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PmsProductAttributeMapper {
     int countByExample(PmsProductAttributeExample example);

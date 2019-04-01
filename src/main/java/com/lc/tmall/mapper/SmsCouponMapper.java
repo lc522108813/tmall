@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.SmsCoupon;
 import com.lc.tmall.model.SmsCouponExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SmsCouponMapper {
     int countByExample(SmsCouponExample example);

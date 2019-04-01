@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.model.PmsProductLadder;
+import com.lc.tmall.model.PmsProductLadder;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

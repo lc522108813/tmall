@@ -1,8 +1,8 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.model.UmsAdminRoleRelation;
-import com.macro.mall.model.UmsPermission;
-import com.macro.mall.model.UmsRole;
+import com.lc.tmall.model.UmsAdminRoleRelation;
+import com.lc.tmall.model.UmsPermission;
+import com.lc.tmall.model.UmsRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

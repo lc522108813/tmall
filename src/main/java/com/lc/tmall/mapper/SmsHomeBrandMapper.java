@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.SmsHomeBrand;
 import com.lc.tmall.model.SmsHomeBrandExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SmsHomeBrandMapper {
     int countByExample(SmsHomeBrandExample example);

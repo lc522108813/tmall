@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.dto.PmsProductAttributeCategoryItem;
+import com.lc.tmall.dto.PmsProductAttributeCategoryItem;
 
 import java.util.List;
 

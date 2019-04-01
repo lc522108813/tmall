@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.model.OmsOrderOperateHistory;
+import com.lc.tmall.model.OmsOrderOperateHistory;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

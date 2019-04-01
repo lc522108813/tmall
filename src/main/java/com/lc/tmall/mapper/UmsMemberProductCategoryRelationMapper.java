@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.UmsMemberProductCategoryRelation;
 import com.lc.tmall.model.UmsMemberProductCategoryRelationExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UmsMemberProductCategoryRelationMapper {
     int countByExample(UmsMemberProductCategoryRelationExample example);

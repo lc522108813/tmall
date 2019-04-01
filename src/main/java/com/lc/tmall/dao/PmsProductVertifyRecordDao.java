@@ -1,6 +1,6 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.model.PmsProductVertifyRecord;
+import com.lc.tmall.model.PmsProductVertifyRecord;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

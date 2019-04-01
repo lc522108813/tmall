@@ -1,7 +1,6 @@
 package com.lc.tmall.dao;
 
 import com.lc.tmall.model.CmsPrefrenceAreaProductRelation;
-import com.macro.mall.model.CmsPrefrenceAreaProductRelation;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

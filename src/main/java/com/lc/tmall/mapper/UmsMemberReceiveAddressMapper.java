@@ -2,8 +2,9 @@ package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.UmsMemberReceiveAddress;
 import com.lc.tmall.model.UmsMemberReceiveAddressExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UmsMemberReceiveAddressMapper {
     int countByExample(UmsMemberReceiveAddressExample example);

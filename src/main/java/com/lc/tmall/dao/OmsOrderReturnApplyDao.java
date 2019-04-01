@@ -1,8 +1,8 @@
 package com.lc.tmall.dao;
 
-import com.macro.mall.dto.OmsOrderReturnApplyResult;
-import com.macro.mall.dto.OmsReturnApplyQueryParam;
-import com.macro.mall.model.OmsOrderReturnApply;
+import com.lc.tmall.dto.OmsOrderReturnApplyResult;
+import com.lc.tmall.dto.OmsReturnApplyQueryParam;
+import com.lc.tmall.model.OmsOrderReturnApply;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
