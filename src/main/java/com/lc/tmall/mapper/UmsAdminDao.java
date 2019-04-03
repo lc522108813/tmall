@@ -1,12 +1,13 @@
-package com.lc.tmall.dao;
+package com.lc.tmall.mapper;
 
-import com.lc.tmall.mapper.UmsAdminMapper;
 import com.lc.tmall.model.UmsAdmin;
 import com.lc.tmall.model.UmsAdminExample;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class UmsAdminDao {
 
     @Autowired

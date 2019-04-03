@@ -6,8 +6,21 @@
     <!--应用名称-->
     <property name="APP_NAME" value="mall-admin"/>
     <!--日志文件保存路径-->
+
+    <property name="FILE_LOG_PATTERN" value="[%d{MM-dd HH:mm:ss:SSS} %p %F:%L]%X{PROCID}-->%m%n"/>
+
     <property name="LOG_FILE_PATH" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/logs}"/>
     <contextName>${APP_NAME}</contextName>
+
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
     <!--每天记录日志到文件appender-->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -24,7 +37,7 @@
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
     <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
         <appender-ref ref="LOGSTASH"/>
     </root>

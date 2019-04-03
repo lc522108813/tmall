@@ -1,7 +1,6 @@
 package com.lc.tmall.component;
 
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.lc.tmall.dto.CommonResult;
 import com.lc.tmall.utils.JsonUtil;
 import org.springframework.security.core.AuthenticationException;

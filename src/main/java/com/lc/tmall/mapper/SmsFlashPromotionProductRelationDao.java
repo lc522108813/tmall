@@ -1,4 +1,4 @@
-package com.lc.tmall.dao;
+package com.lc.tmall.mapper;
 
 import com.lc.tmall.dto.SmsFlashPromotionProduct;
 import org.apache.ibatis.annotations.Param;

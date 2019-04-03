@@ -1,4 +1,4 @@
-package com.lc.tmall.dao;
+package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.UmsAdminRoleRelation;
 import com.lc.tmall.model.UmsPermission;

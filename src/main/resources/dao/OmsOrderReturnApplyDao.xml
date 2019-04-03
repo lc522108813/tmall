@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lc.tmall.dao.OmsOrderReturnApplyDao">
-    <resultMap id="returnApplyDetailResultMap" type="com.macro.mall.dto.OmsOrderReturnApplyResult" extends="com.macro.mall.mapper.OmsOrderReturnApplyMapper.BaseResultMap">
-        <association property="companyAddress" resultMap="com.macro.mall.mapper.OmsCompanyAddressMapper.BaseResultMap" columnPrefix="ca_"/>
+<mapper namespace="com.lc.tmall.mapper.OmsOrderReturnApplyDao">
+    <resultMap id="returnApplyDetailResultMap" type="com.lc.tmall.dto.OmsOrderReturnApplyResult" extends="com.lc.tmall.mapper.OmsOrderReturnApplyMapper.BaseResultMap">
+        <association property="companyAddress" resultMap="com.lc.tmall.mapper.OmsCompanyAddressMapper.BaseResultMap" columnPrefix="ca_"/>
     </resultMap>
-    <select id="getList" resultMap="com.macro.mall.mapper.OmsOrderReturnApplyMapper.BaseResultMap">
+    <select id="getList" resultMap="com.lc.tmall.mapper.OmsOrderReturnApplyMapper.BaseResultMap">
         SELECT
         id,
         create_time,

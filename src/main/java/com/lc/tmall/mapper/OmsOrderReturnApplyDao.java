@@ -1,4 +1,4 @@
-package com.lc.tmall.dao;
+package com.lc.tmall.mapper;
 
 import com.lc.tmall.dto.OmsOrderReturnApplyResult;
 import com.lc.tmall.dto.OmsReturnApplyQueryParam;

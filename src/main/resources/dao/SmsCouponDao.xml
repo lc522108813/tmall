@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lc.tmall.dao.SmsCouponDao">
-    <resultMap id="couponItemParam" type="com.macro.mall.dto.SmsCouponParam" extends="com.macro.mall.mapper.SmsCouponMapper.BaseResultMap">
-        <collection property="productRelationList" columnPrefix="cpr_" resultMap="com.macro.mall.mapper.SmsCouponProductRelationMapper.BaseResultMap">
+<mapper namespace="com.lc.tmall.mapper.SmsCouponDao">
+    <resultMap id="couponItemParam" type="com.lc.tmall.dto.SmsCouponParam" extends="com.lc.tmall.mapper.SmsCouponMapper.BaseResultMap">
+        <collection property="productRelationList" columnPrefix="cpr_" resultMap="com.lc.tmall.mapper.SmsCouponProductRelationMapper.BaseResultMap">
         </collection>
-        <collection property="productCategoryRelationList" columnPrefix="cpcr_" resultMap="com.macro.mall.mapper.SmsCouponProductCategoryRelationMapper.BaseResultMap">
+        <collection property="productCategoryRelationList" columnPrefix="cpcr_" resultMap="com.lc.tmall.mapper.SmsCouponProductCategoryRelationMapper.BaseResultMap">
         </collection>
     </resultMap>
     <select id="getItem" resultMap="couponItemParam">

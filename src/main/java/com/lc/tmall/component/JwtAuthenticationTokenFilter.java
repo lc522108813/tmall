@@ -46,7 +46,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             String authToken = authHeader.substring(this.tokenHead.length());
             // 从该token当中获取到 username信息
             String username = jwtTokenUtil.getUsernameFromToken(authToken);
-            // 当从token当中解析出来的username不为空，并且SecurityContextHolder中的context未设置时
+            // 当从token当中解析出来的username不为空，并且SecurityContextHolder中的context未设置验证结果时
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 // 校验从token当中解析出来的 username与真正的username是否能对应上，并且判断token的有效期

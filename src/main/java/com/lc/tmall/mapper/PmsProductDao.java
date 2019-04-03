@@ -1,4 +1,4 @@
-package com.lc.tmall.dao;
+package com.lc.tmall.mapper;
 
 import com.lc.tmall.dto.PmsProductResult;
 import org.apache.ibatis.annotations.Param;

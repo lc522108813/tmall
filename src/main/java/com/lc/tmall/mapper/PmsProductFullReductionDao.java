@@ -1,4 +1,4 @@
-package com.lc.tmall.dao;
+package com.lc.tmall.mapper;
 
 import com.lc.tmall.model.PmsProductFullReduction;
 import org.apache.ibatis.annotations.Param;

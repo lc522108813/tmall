@@ -1,4 +1,4 @@
-package com.lc.tmall.dao;
+package com.lc.tmall.mapper;
 
 import com.lc.tmall.dto.OmsOrderDeliveryParam;
 import com.lc.tmall.dto.OmsOrderDetail;
