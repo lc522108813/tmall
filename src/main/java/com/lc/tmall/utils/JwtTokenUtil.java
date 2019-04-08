@@ -105,6 +105,9 @@ public class JwtTokenUtil {
 
     /** 刷新token **/
     public String refreshToken(String token){
+        if(!canRefresh(token)){
+            return null;
+        }
         Claims claims=getClaimsFromToken(token);
         claims.put(CLAIM_KEY_CREATED,new Date());
         return generateToken(claims);

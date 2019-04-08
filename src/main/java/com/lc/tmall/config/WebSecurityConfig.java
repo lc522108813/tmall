@@ -9,6 +9,7 @@ import com.lc.tmall.model.UmsAdmin;
 import com.lc.tmall.model.UmsPermission;
 import com.lc.tmall.service.UmsAdminService;
 import com.lc.tmall.utils.MD5Util;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -21,18 +22,25 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 
 /** EnableGlobalMethodSecurity开启，用来判断用户对某个空值层的方法是否具有访问权限 **/
+@Slf4j
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -110,6 +118,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         };
     }
 
+
     // 配置数据源
     // 配置加密解密策略
     @Override
@@ -144,8 +153,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         bean.setOrder(0);
         return new CorsFilter(source);
     }
-
-
 
 
 }

@@ -49,7 +49,7 @@ public class MybatisConfig {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        bean.setMapperLocations(resolver.getResources("classpath:/dao/*Mapper.xml"));
+        bean.setMapperLocations(resolver.getResources("classpath:/com/lc/tmall/mapper/**.xml"));
         bean.setPlugins(new Interceptor[]{pageHelper});
         bean.setConfiguration(configuration);
         return bean.getObject();

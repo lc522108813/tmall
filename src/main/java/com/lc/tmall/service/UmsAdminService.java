@@ -1,5 +1,6 @@
 package com.lc.tmall.service;
 
+import com.lc.tmall.consts.CommonConsts;
 import com.lc.tmall.dto.UmsAdminParam;
 import com.lc.tmall.mapper.UmsAdminDao;
 import com.lc.tmall.mapper.UmsAdminMapper;
@@ -7,6 +8,7 @@ import com.lc.tmall.mapper.UmsAdminRoleRelationDao;
 import com.lc.tmall.model.UmsAdmin;
 import com.lc.tmall.model.UmsAdminExample;
 import com.lc.tmall.model.UmsPermission;
+import com.lc.tmall.model.UmsRole;
 import com.lc.tmall.utils.JwtTokenUtil;
 import com.lc.tmall.utils.MD5Util;
 import lombok.extern.slf4j.Slf4j;
@@ -41,11 +43,12 @@ public class UmsAdminService {
     @Autowired
     private UserDetailsService userDetailsService;
 
+
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
     public List<UmsPermission> getPermissionList(Long adminId) {
-        List<UmsPermission> permissions=adminRoleRelationDao.getPermissionList(adminId);
+        List<UmsPermission> permissions = adminRoleRelationDao.getPermissionList(adminId);
         return permissions;
     }
 
@@ -72,19 +75,43 @@ public class UmsAdminService {
 
     public String login(String username, String password) {
         String token = null;
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, MD5Util.encode(password));
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username, password);
         try {
             // 使用authenticationManager 进行验证
-            Authentication auth = authenticationManager.authenticate(authenticationToken);
+            Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
             // 将验证结果存放到 SecurityContextHolder当中
             SecurityContextHolder.getContext().setAuthentication(auth);
             // 之后开始生成token
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             token = jwtTokenUtil.generateToken(userDetails);
         } catch (Exception e) {
-            log.info("login exception:{}",e.toString());
+            log.info("login exception:{}", e.toString());
         }
         return token;
+    }
+
+
+    /**
+     * 刷新token
+     **/
+    public String refreshToken(String bareToken) {
+        // 首先校验老的token
+        String token = bareToken.substring(CommonConsts.TOKEN_HEAD.length());
+        return jwtTokenUtil.refreshToken(token);
+    }
+
+
+    /**
+     * 单个用户信息查询
+     **/
+    public UmsAdmin getItem(Long id) {
+        UmsAdmin umsAdmin = umsAdminMapper.selectByPrimaryKey(id);
+        return umsAdmin;
+    }
+
+
+    public List<UmsRole> getRoles(Long id) {
+        return adminRoleRelationDao.getRoleList(id);
     }
 
 }
