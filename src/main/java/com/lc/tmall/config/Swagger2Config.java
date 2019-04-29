@@ -31,7 +31,7 @@ public class Swagger2Config {
         // 在Header中添加Authorization
         List<Parameter> pars=new ArrayList<>();
         ParameterBuilder authPar=new ParameterBuilder();
-        authPar.name("Authorization").description("Authorization for authentication").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
+        authPar.name("Authorization").description("Authorization for jwtAuth").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
         pars.add(authPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())

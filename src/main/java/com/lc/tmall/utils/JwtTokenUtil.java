@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/** 最好使用redis对所有的token进行管理 **/
 @Component
 @Slf4j
 public class JwtTokenUtil {
@@ -24,6 +26,7 @@ public class JwtTokenUtil {
 
     @Value("${jwt.secret}")
     private String secret;
+    // 超时时间 7 天
     @Value("${jwt.expiration}")
     private Long expiration;
 
@@ -39,11 +42,28 @@ public class JwtTokenUtil {
 
 
     /** 根据负载生成token **/
+    /**
+     * 整个jwt的签发过程，需要使用builder进行构建并填入所需属性，最后由compact生成一个字符串
+     * 其中 subject   setExpiration等设置属于官方配置属性，而claims当中可以添加自定义属性
+     *SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+     *         SecretKey secretKey = generalKey();
+     *         JwtBuilder builder = Jwts.builder()
+     *                 .setId(id)                                      // JWT_ID
+     *                 .setAudience("")                                // 接受者
+     *                 .setClaims(null)                                // 自定义属性
+     *                 .setSubject("")                                 // 主题
+     *                 .setIssuer("")                                  // 签发者
+     *                 .setIssuedAt(new Date())                        // 签发时间
+     *                 .setNotBefore(new Date())                       // 失效时间
+     *                 .setExpiration(long)                                // 过期时间
+     *                 .signWith(signatureAlgorithm, secretKey);           // 签名算法以及密匙
+     *         return builder.compact();
+     **/
     public String generateToken(Map<String,Object> claims){
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(generateExpirationDate())
-                .signWith(SignatureAlgorithm.HS512,secret)
+                .signWith(SignatureAlgorithm.HS256,secret)
                 .compact();
     }
 
@@ -55,7 +75,7 @@ public class JwtTokenUtil {
     public Claims getClaimsFromToken(String token){
         Claims claims=null;
         try{
-            // 在当前场景中，负载只使用了 sub已经 expireDate
+            // 在当前场景中，负载只使用了 sub 以及 expireDate
             claims=Jwts.parser()
                     .setSigningKey(secret)
                     .parseClaimsJws(token)
@@ -95,6 +115,7 @@ public class JwtTokenUtil {
     /** 校验token是否过期 **/
     public boolean isTokenExpired(String token){
         Date date=getExpiredDateFromToken(token);
+        log.info("for token {} the exipre date is {}",token , date);
         return new Date().after(date);
     }
 

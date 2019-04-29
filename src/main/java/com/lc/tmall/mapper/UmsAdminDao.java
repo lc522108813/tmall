@@ -22,4 +22,8 @@ public class UmsAdminDao {
         }
         return null;
     }
+
+    public int deleteByPrimaryKey(Long id){
+        return umsAdminMapper.deleteByPrimaryKey(id);
+    }
 }

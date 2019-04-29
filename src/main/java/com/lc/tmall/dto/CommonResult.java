@@ -39,8 +39,17 @@ public class CommonResult {
         return this;
     }
 
+//    public static void main(String[] args) {
+//        List<String> numbers=new ArrayList<>();
+//        for(int i=0;i<1000;i++){
+//            numbers.add(i+"");
+//        }
+//        CommonResult commonResult=new CommonResult().pageSuccess(numbers);
+//        System.out.println(commonResult);
+//    }
+
     /**
-     * 返回分页成功数据
+     * 返回分页成功数据，将list的内容合并为一个pageInfo。表示一页，该也总大小就是list的大小
      */
     public CommonResult pageSuccess(List data) {
         PageInfo pageInfo = new PageInfo(data);

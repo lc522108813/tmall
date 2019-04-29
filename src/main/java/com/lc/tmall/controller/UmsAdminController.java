@@ -6,6 +6,7 @@ import com.lc.tmall.dto.CommonResult;
 import com.lc.tmall.dto.UmsAdminLoginParam;
 import com.lc.tmall.dto.UmsAdminParam;
 import com.lc.tmall.model.UmsAdmin;
+import com.lc.tmall.model.UmsPermission;
 import com.lc.tmall.model.UmsRole;
 import com.lc.tmall.service.UmsAdminService;
 import io.swagger.annotations.Api;
@@ -121,5 +122,60 @@ public class UmsAdminController {
         return new CommonResult().success(data);
     }
 
+
+    @ApiOperation(value="删除指定用户信息")
+    @RequestMapping(value="/delete/{id}",method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult delete(@PathVariable Long id){
+        int count=umsAdminService.deleteAdmin(id);
+        if(count>0){
+            return new CommonResult().success(null);
+        }
+        return new CommonResult().failed();
+    }
+
+    @ApiOperation(value="修改用户的权限角色")
+    @RequestMapping(value="/role/update",method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updateRole(@RequestParam("adminId")Long adminId,
+                                   @RequestParam("roleIds")List<Long> roleIds){
+        int count=umsAdminService.updateRole(adminId,roleIds);
+        if(count>0){
+            return new CommonResult().success(null);
+        }
+        return new CommonResult().failed();
+
+    }
+
+
+    @ApiOperation(value="获取指定用户的角色")
+    @RequestMapping(value="/role/{adminId}",method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult getRoleList(@PathVariable Long adminId){
+        List<UmsRole> list=umsAdminService.getRoles(adminId);
+        return new CommonResult().success(list);
+    }
+
+    @ApiOperation(value="给用户分配+-权限")
+    @RequestMapping(value="/permission/update",method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updatePermission(@RequestParam Long adminId,
+                                         @RequestParam("permissionIds") List<Long> permissionIds){
+
+        int count = umsAdminService.updatePermission(adminId,permissionIds);
+        if(count>0){
+            return new CommonResult().success(count);
+        }
+        return new CommonResult().failed();
+    }
+
+
+    @ApiOperation(value = "获取用户所有权限（包括+-权限）")
+    @RequestMapping(value="/permission/{adminId}",method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult getPermissionList(@PathVariable Long adminId){
+        List<UmsPermission> permissionList=umsAdminService.getPermissionList(adminId);
+        return new CommonResult().success(permissionList);
+    }
 }
 
